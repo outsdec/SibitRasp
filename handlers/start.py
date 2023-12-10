@@ -39,14 +39,11 @@ less_type = {
     "лаб.": "Лабораторная работа",
     "конс.": "Консультация",
 }
-# Обработка команды /schedule в вашем боте
 @router.message(Command("rasp")) 
 async def send_schedule_message(message: types.Message):
     try:
-        # Замените 'your_group' на нужную группу
         selected_group = 'ИН-40'
         
-        # Получение расписания для выбранной группы
         group_schedule = sorted_data[sorted_data['Group'] == selected_group]
 
         # Формирование расписания для отправки
@@ -56,7 +53,6 @@ async def send_schedule_message(message: types.Message):
             for index, row in day_schedule.iterrows():
                 schedule_text += f"Время пары: {less.get(row['Les'])}\nПредмет: {row['Subject']}\nТип предмета: ({less_type.get(row['Subj_type'])})\nПреподаватель: {row['Name']}\nАудитория: ({row['Aud']})\n\n"
 
-        # Отправка расписания в Telegram
         await message.answer(schedule_text, parse_mode=ParseMode.MARKDOWN)
 
     except Exception as e:
