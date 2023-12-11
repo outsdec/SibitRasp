@@ -87,7 +87,6 @@ async def send_group_schedule(message, selected_group):
     try:
         group_schedule = sorted_data[sorted_data['Group'] == selected_group]
 
-        # Формирование расписания для отправки
         schedule_text = f"Расписание для группы {selected_group}:\n"
         for day, day_schedule in group_schedule.groupby('Day'):
             schedule_text += f"\nДень {day}:\n"
@@ -124,7 +123,6 @@ async def send_schedule_message(message: types.Message):
         
         group_schedule = sorted_data[sorted_data['Group'] == selected_group]
 
-        # Формирование расписания для отправки
         schedule_text = f"Расписание для группы {selected_group}:\n"
         for day, day_schedule in group_schedule.groupby('Day'):
             for index, row in day_schedule.iterrows():
