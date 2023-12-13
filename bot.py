@@ -3,7 +3,7 @@ from aiogram.enums import ContentType
 import asyncio
 
 from datetime import datetime, timedelta
-from handlers import start, group_rasp
+from handlers import start, group_rasp, audiences_rasp
 
 from config_reader import config
 
@@ -13,7 +13,8 @@ dp = Dispatcher()
 
 dp.include_routers(
     start.router,
-    group_rasp.router
+    group_rasp.router,
+    audiences_rasp.router
 )
 
 
